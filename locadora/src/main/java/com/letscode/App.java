@@ -15,10 +15,13 @@ public final class App {
     public static void main(String[] args) {
         List<Aluguel<Veiculo>> alugueis = new ArrayList<>();
 
+        VeiculoFactory veiculoFactory = new VeiculoFactory();
+        PessoaFactory pessoaFactory = new PessoaFactory();
+
         for (int k = 0; k < 10; k++) {
             Aluguel<Veiculo> aluguel = new Aluguel<>();
-            aluguel.setBem(obterVeiculoAleatorio());
-            aluguel.setPessoa(obterPessoaAleatoria());
+            aluguel.setBem(veiculoFactory.createRandom());
+            aluguel.setPessoa(pessoaFactory.createRandom());
             aluguel.setDias(new Random().nextInt(20) + 1);
 
             alugueis.add(aluguel);
@@ -27,31 +30,4 @@ public final class App {
         alugueis.forEach(aluguel -> System.out.println(aluguel));
     }
 
-    private static Veiculo obterVeiculoAleatorio() {
-        int numero = new Random().nextInt(3);
-
-        switch(numero) {
-            case 0:
-                return new VeiculoPequeno();
-            case 1:
-                return new VeiculoMedio();
-            case 2:
-                return new VeiculoSUV();
-        }
-
-        return null;
-    }
-
-    private static Pessoa obterPessoaAleatoria() {
-        int numero = new Random().nextInt(2);
-
-        switch(numero) {
-            case 0:
-                return new PessoaFisica();
-            case 1:
-                return new PessoaJuridica();
-        }
-
-        return null;
-    }
 }
