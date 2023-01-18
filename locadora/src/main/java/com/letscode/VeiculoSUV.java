@@ -6,7 +6,7 @@ public class VeiculoSUV implements Veiculo {
     
     @Override
     public BigDecimal precoBase() {
-        return new BigDecimal("150");
+        return new BigDecimal("200");
     }
 
     @Override
