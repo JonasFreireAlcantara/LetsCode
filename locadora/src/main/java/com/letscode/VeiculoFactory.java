@@ -4,9 +4,15 @@ import java.util.Random;
 
 public class VeiculoFactory implements AbstractFactory<Veiculo> {
 
+    private Random random;
+
+    public VeiculoFactory(Random random) {
+        this.random = random;
+    }
+
     @Override
     public Veiculo createRandom() {
-        int numero = new Random().nextInt(3);
+        int numero = this.random.nextInt(3);
 
         switch(numero) {
             case 0:

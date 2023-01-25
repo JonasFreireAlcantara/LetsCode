@@ -4,9 +4,15 @@ import java.util.Random;
 
 public class PessoaFactory implements AbstractFactory<Pessoa> {
 
+    private Random random;
+
+    public PessoaFactory(Random random) {
+        this.random = random;
+    }
+
     @Override
     public Pessoa createRandom() {
-        int numero = new Random().nextInt(2);
+        int numero = this.random.nextInt(2);
 
         switch(numero) {
             case 0:
